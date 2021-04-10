@@ -1,0 +1,14 @@
+<div class="graph">
+  <app-senctil class="graph-senctil"></app-senctil>
+
+  <div class="graph-content" #container></div>
+
+  <div class="panel">
+    <button (click)="handleSave()">保存</button>
+
+    <p>参数设置</p>
+    <p *ngIf="!graph.expId$.value">选择组件后，在此处设置组件的输入参数。</p>
+
+    <app-panel *ngIf="graph.expId$.value"></app-panel>
+  </div>
+</div>

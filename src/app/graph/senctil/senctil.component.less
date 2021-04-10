@@ -1,0 +1,60 @@
+.title {
+  padding: 10px;
+  background-color: rgb(228, 230, 235);
+}
+.dnd-wrap {
+  align-items: center;
+  user-select: none;
+  width: 210px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dnd-rect {
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgb(228, 230, 235);
+  text-align: center;
+  line-height: 20px;
+  margin: 16px;
+  filter: opacity(0.4) grayscale(1);
+
+  cursor: move;
+  .icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &:hover {
+    border: 1px solid rgb(133, 88, 237);
+  }
+}
+
+// .validating {
+//   position: relative;
+// }
+
+// .validating:after {
+//   position: absolute;
+//   top: 4px;
+//   left: 4px;
+//   content: " ";
+//   display: block;
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   border: 6px solid #873bf4;
+//   border-color: #873bf4 transparent #873bf4 transparent;
+//   animation: lds-dual-ring 1.2s linear infinite;
+// }
+
+// @keyframes lds-dual-ring {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }

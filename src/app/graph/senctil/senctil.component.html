@@ -1,0 +1,20 @@
+<div class="title">组件</div>
+<div class="dnd-wrap">
+  <div data-type="docker" class="dnd-rect" (mousedown)="startDrag($event)">
+    <img
+      width="40px"
+      class="icon"
+      src="http://composer.cloudtogo.cn/icon-docker01.svg"
+    />
+    <span>docker</span>
+  </div>
+
+  <div data-type="redis" class="dnd-rect" (mousedown)="startDrag($event)">
+    <img width="40px" class="icon" src="/assets/redis.png" />
+    <span>redis</span>
+  </div>
+  <div data-type="sql" class="dnd-rect" (mousedown)="startDrag($event)">
+    <img width="40px" class="icon" src="/assets/sql.png" />
+    <span>sql</span>
+  </div>
+</div>
