@@ -135,6 +135,7 @@ export class GraphService {
 
     // 事件1-点击节点
     this.graph.on('node:click', (e: any) => {
+      if (1) return;
       this.reset();
       e.node.attr('body/stroke', '#8558ED');
       e.node.attr('body/stroke-width', '2');
@@ -161,6 +162,7 @@ export class GraphService {
 
     // 事件3-移入移除
     this.graph.on('cell:mouseenter', (e: any) => {
+      if (1) return;
       if (e.cell.isNode()) {
         e.cell.addTools([
           {

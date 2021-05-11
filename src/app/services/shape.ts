@@ -1,4 +1,4 @@
-import { Dom, Graph, Markup } from '@antv/x6';
+import { Graph } from '@antv/x6';
 
 Graph.registerNode(
   'custom-node',
@@ -21,11 +21,19 @@ Graph.registerNode(
       },
       title: {
         text: 'Node',
-        refX: 10, // 距离左侧距离
-        refY: 54,
+        refX: '50%', // 距离左侧距离
+        refY: 60,
         fill: 'rgba(0,0,0,0.85)',
         fontSize: 14,
-        'text-anchor': 'start',
+        textAnchor: 'middle',
+        textVerticalAnchor: 'middle',
+        // 控制文本长度
+        textWrap: {
+          width: -10,
+          height: '50%', // 高度为参照元素高度的一半
+          ellipsis: true, // 文本超出显示范围时，自动添加省略号
+          breakWord: true, // 是否截断单词
+        },
       },
     },
     // 节点/边的 SVG/HTML 片段
@@ -41,7 +49,6 @@ Graph.registerNode(
       {
         tagName: 'text',
         selector: 'title',
-        className: 'my-title',
       },
       {
         tagName: 'text',
@@ -133,16 +140,89 @@ Graph.registerNode(
   true
 );
 
+// Graph.registerNode(
+//   'docker',
+//   {
+//     inherit: 'custom-node',
+//     attrs: {
+//       image: {
+//         'xlink:href': 'http://composer.cloudtogo.cn/icon-docker.svg',
+//       },
+//       title: {
+//         text: 'docker',
+//       },
+//     },
+//   },
+//   true
+// );
+
 Graph.registerNode(
   'docker',
   {
-    inherit: 'custom-node',
-    attrs: {
-      image: {
-        'xlink:href': 'http://composer.cloudtogo.cn/icon-docker.svg',
-      },
-      title: {
-        text: 'docker',
+    inherit: 'html',
+    width: 100,
+    height: 100,
+
+    html() {
+      const wrap = document.createElement('div');
+      wrap.innerHTML = `
+      <div  class="my-btn">
+      <img
+        width="30px"
+        height="30px"
+        class="icon"
+        src="http://composer.cloudtogo.cn/icon-docker.svg"
+      />
+      <span>docker</span>
+    </div>`;
+      return wrap;
+    },
+    ports: {
+      items: [
+        {
+          group: 'in',
+        },
+        {
+          group: 'out',
+        },
+      ],
+      groups: {
+        in: {
+          position: {
+            name: 'line',
+            args: {
+              start: { x: 0, y: -10 },
+              end: { x: 50, y: -10 },
+            },
+          },
+
+          attrs: {
+            circle: {
+              r: 4,
+              stroke: '#27a4ff',
+              magnet: true,
+              fill: '#27a4ff',
+            },
+          },
+        },
+        out: {
+          position: {
+            name: 'line',
+            args: {
+              start: { x: 0, y: 80 },
+              end: { x: 50, y: 80 },
+            },
+          },
+          attrs: {
+            circle: {
+              r: 4,
+              magnet: true,
+              stroke: '#27a4ff',
+              strokeWidth: 2,
+              fill: '#fff',
+            },
+          },
+        },
       },
     },
   },
