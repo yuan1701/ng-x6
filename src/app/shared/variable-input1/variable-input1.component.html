@@ -4,10 +4,11 @@
   placeholder="我是placeholder"
   [innerHTML]="inputValue"
   contenteditable="true"
-  (keydown)="onKeyUp($event)"
+  (keydown)="onKeydown($event)"
   (blur)="onBlur($event)"
+  (paste)="onPaste($event)"
 ></div>
 
-<button (click)="addVar()">add var</button>
+<button (click)="addVar('name')">add var</button>
 
 <!--参考： https://blog.towavephone.com/rich-input-question/ -->

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: wheat;
+    }
+    .circleContainer {
+      position: relative;
+      top: 200px;
+      left: 200px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 70px;
+    }
+    .circle {
+      background-color: white;
+      padding: 10px;
+      border-radius: 50%;
+    }
+    #circleMenu {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+    }
+    .circleItem {
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      left: 41%;
+      top: 41%;
+      width: 50px;
+      height: 50px;
+      transform-origin: 0 0;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <span class="circleContainer" onmouseover="onMouseOver(event)">
+      <img src="" class="circle" width="50" height="50" alt="" />
+      <span>node</span>
+    </span>
+
+    <script>
+      function onMouseOver(event) {
+        if (document.getElementById("circleMenu")) {
+          return;
+        }
+        const itemLen = 9;
+        //   1.获取相对网页元素位置...
+        const x = 200,
+          y = 200;
+
+        //   2.生成circlemenu元素
+        const circlemenu = document.createElement("div");
+
+        circlemenu.id = "circleMenu";
+        circlemenu.style.left = x - 115 + "px";
+        circlemenu.style.top = y - 115 + "px";
+        // 3.9个子元素
+        const interVal = 360 / 9;
+        for (let i = 0; i < itemLen; i++) {
+          const circleitem = document.createElement("div");
+          circleitem.className = "circleItem";
+          circleitem.innerHTML = "00-" + i;
+          //   rotate(40deg) translate(111px) rotate(-40deg)
+          circleitem.style.transform = `rotate(${
+            interVal * i
+          }deg) translate(120px) rotate(-${interVal * i}deg)`;
+
+          circlemenu.append(circleitem);
+        }
+
+        // 添加事件
+        circlemenu.onmouseleave = onMouseLeave;
+
+        // 4.插入到body上
+        document.body.append(circlemenu);
+      }
+
+      function onMouseLeave(event) {
+        const circlemenu = document.getElementById("circleMenu");
+        document.body.removeChild(circlemenu);
+      }
+
+      function getTargetElement(e) {
+        if (e.target.className === "circleContainer") {
+          return e.target;
+        }
+        return t.target.parentNode;
+      }
+    </script>
+  </body>
+</html>
